@@ -39,7 +39,6 @@ export class ClientesFormComponent implements OnInit {
     }
 
     cancelar() {
-        this.router.navigate(['clients-form']);
-        console.log('Cancelou!');
+        this.router.navigate(['/clients-lista']);
     }
 }
