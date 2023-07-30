@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Cliente} from '../cliente';
 import {ClientesService} from '../../clientes.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-clientes-form',
@@ -12,7 +13,7 @@ export class ClientesFormComponent implements OnInit {
     success = false;
     errors: string[];
 
-    constructor(private clienteService: ClientesService) {
+    constructor(private clienteService: ClientesService, private router: Router) {
         this.cliente = new Cliente();
     }
 
@@ -20,7 +21,6 @@ export class ClientesFormComponent implements OnInit {
 
     ngOnInit(): void {
     }
-
 
     onSubmit(): void {
         this.clienteService
@@ -36,5 +36,10 @@ export class ClientesFormComponent implements OnInit {
                     this.errors = errorResponse.error.errors;
                 }
             );
+    }
+
+    cancelar() {
+        this.router.navigate(['clients-form']);
+        console.log('Cancelou!');
     }
 }
